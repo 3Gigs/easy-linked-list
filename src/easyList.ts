@@ -157,6 +157,31 @@ export class easyList<T> {
         return currElem.data;
     }
 
+    /**
+     * Removes the first element, and returns it
+     *
+     * @throws RangeError If list is blank
+     * @return {*}  {(T | undefined)}
+     * @memberof easyList
+     */
+    public shift(): T | undefined {
+        if(this._size == 0)
+        {
+            throw new RangeError();
+        }
+
+        const currElem = this._head;
+        currElem.nextNode.prevNode = this._head.nextNode;
+        this._head = currElem.nextNode;
+        currElem.prevNode = new listNode<T>();
+
+        this._size--;
+        if(this._size == 0) {
+            this._tail = currElem.nextNode;
+        }
+        return currElem.data;
+    }
+
 	/**
      * Replaces an element with the specified element at a given index
      *

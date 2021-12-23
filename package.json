@@ -1,9 +1,9 @@
 {
-  "name": "easy-list",
+  "name": "easy-linked-list",
   "version": "1.0.0",
   "description": "Simple linked list implementation for JavaScript",
-  "main": "./lib/linkedLIst.js",
-  "typings": "./lib/linkedList.d.ts",
+  "main": "./lib/easyList.js",
+  "typings": "./lib/easyList.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register '__tests__/**/*.ts'"

@@ -127,6 +127,7 @@ describe("Linked List:", () => {
         it("Should throw an error (removing something from an empty list)", () => {
             try {
                 emptyList.remove(0);
+                assert.fail();
             }
             catch(e) {}
         })
@@ -163,6 +164,41 @@ describe("Linked List:", () => {
             assert.equal(simpleList.head, 1);
             simpleList.pop();
             assert.equal(simpleList.head, undefined);
+        })
+        it("Should throw error on an empty list", () => {
+            const list = new easyList();
+            try {
+                list.pop();
+                assert.fail();
+            }
+            catch(e) {}
+        })
+    })
+    describe("#shift", () => {
+        it("Should properly remove the first element", () => {
+            const simpleList = new easyList<number>();
+            simpleList.push(1).push(2).push(3).push(4).push(5);
+            simpleList.shift();
+            for(let e of simpleList) {
+                if(e == 1) {
+                    assert.fail();
+                }
+            }
+        })
+        it("Should properly update head and tail", () => {
+            const simpleList = new easyList<number>();
+            simpleList.push(1);
+            simpleList.shift();
+            assert.equal(simpleList.head, undefined);
+            assert.equal(simpleList.tail, undefined);
+        })
+        it("Should throw error on an empty list", () => {
+            const list = new easyList();
+            try {
+                list.shift();
+                assert.fail();
+            }
+            catch(e) {}
         })
     })
 })
