@@ -1,4 +1,4 @@
-import { linkedList } from "../lib/linkedList";
+import linkedList from "../lib/linkedList";
 import { assert } from "chai"
 
 describe("Linked List:", () => {

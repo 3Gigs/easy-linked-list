@@ -1,4 +1,4 @@
-export class linkedList<T> {
+export default class linkedList<T> {
     private _head: listNode<T>;
     private _tail: listNode<T>;
     private _size: number;
