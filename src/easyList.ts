@@ -1,4 +1,4 @@
-export default class linkedList<T> {
+export class easyList<T> {
     private _head: listNode<T>;
     private _tail: listNode<T>;
     private _size: number;
@@ -46,7 +46,7 @@ export default class linkedList<T> {
 
         return this;
     }
-    
+
     /**
      * Adds an element at a specified index, shifting the previous one forward
      *
@@ -130,6 +130,30 @@ export default class linkedList<T> {
         }
 
         this.size--;
+        return currElem.data;
+    }
+
+    /**
+     * Removes the last element in the list. 
+     *
+     * @throws RangeError if list is empty
+     * @return {*}  {(T | undefined)}
+     * @memberof linkedList
+     */
+    public pop(): T | undefined {
+        if(this._size == 0)
+        {
+            throw new RangeError();
+        }
+
+        const currElem = this._tail
+        currElem.prevNode.nextNode = this._tail.nextNode;
+        this._tail = currElem.prevNode;
+        currElem.prevNode = new listNode<T>();
+        this._size--;
+        if(this._size == 0)
+            this._head = currElem.prevNode;
+
         return currElem.data;
     }
 
