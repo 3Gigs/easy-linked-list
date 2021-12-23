@@ -1,5 +1,5 @@
 {
-  "name": "linked-list",
+  "name": "easy-list",
   "version": "1.0.0",
   "description": "Simple linked list implementation for JavaScript",
   "main": "./lib/linkedLIst.js",
@@ -9,7 +9,7 @@
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register '__tests__/**/*.ts'"
   },
   "keywords": [
-    "linked list"
+    "linked list", "typescript", "simple linked list"
   ],
   "author": "3Gigs",
   "license": "ISC",
