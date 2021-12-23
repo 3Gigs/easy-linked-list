@@ -1,11 +1,18 @@
+/**
+ * Simple linked list implementation. 
+ *
+ * @export
+ * @class easyList
+ * @template T
+ */
 export class easyList<T> {
     private _head: listNode<T>;
     private _tail: listNode<T>;
     private _size: number;
 
     /**
-     * Initializes the head and tail with sentinel nodes
-     * @memberof linkedList
+     * Creates an instance of easyList, and initialize and set the head and tail's sentinel nodes
+     * @memberof easyList
      */
     constructor() {
         this._head = new listNode<T>(undefined);
