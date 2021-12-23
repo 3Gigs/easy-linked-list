@@ -9,5 +9,5 @@
         "outDir": "./lib",
     },
     "exclude": ["./node_modules/", "./__tests__/*",],
-    "include": ["easyLinkedList/*"]
+    "include": ["src/*"]
 }

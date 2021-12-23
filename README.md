@@ -1,7 +1,7 @@
 ## **Easy-List**: Simple Linked-List implementation
 Because I found out JavaScript didn't have linked lists...  
 ## Getting Started
-**ES6 is required. **  
+**ES6 is required.**  
 ### Installation  
 ```bash
 npm install easy-list@latest

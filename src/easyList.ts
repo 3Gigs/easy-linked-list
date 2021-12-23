@@ -237,7 +237,7 @@ export class easyList<T> {
     }
 }
 
-class listNode<T> {
+export class listNode<T> {
     private _next: listNode<T> | undefined;
     private _prev: listNode<T> | undefined;
     private _data: T | undefined;

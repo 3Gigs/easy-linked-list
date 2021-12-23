@@ -1,1 +1,0 @@
-export { easyList } from "./easyList";
