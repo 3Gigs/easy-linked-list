@@ -8,6 +8,6 @@
         "esModuleInterop": true,
         "outDir": "./lib",
     },
-    "exclude": ["node_modules/", "**/__tests__/*", "lib/**/"],
-    "include": ["src/*"]
+    "exclude": ["./node_modules/", "./__tests__/*",],
+    "include": ["easyLinkedList/*"]
 }

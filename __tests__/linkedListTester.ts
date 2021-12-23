@@ -1,4 +1,4 @@
-import { easyList } from "../src/";
+import { easyList } from "../easyLinkedList";
 import { assert } from "chai"
 
 describe("Linked List:", () => {
