@@ -245,7 +245,7 @@ export class easyList<T> {
     /**
      * Check if list is empty
      *
-     * @return True if list is empty
+     * @return True if list is empty, return false otherwise
      */
     public isEmpty(): boolean {
         if(this._size === 0)
