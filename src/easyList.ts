@@ -57,6 +57,7 @@ export class easyList<T> {
     /**
      * Adds an element at a specified index, shifting the previous one forward
      *
+     * @throws RangeError If index provided is out of range
      * @param {number} index
      * @param {(T | undefined)} elem
      * @memberof linkedList
@@ -96,6 +97,14 @@ export class easyList<T> {
         this._size++;
     }
 
+    /**
+     * Get a element's data at a given index
+     * 
+     * @throws RangeError If provided is out of range
+     * @param {number} index
+     * @return {*}  {(T | undefined)}
+     * @memberof easyList
+     */
     public get(index: number): T | undefined {
         let currElem = this._head;
 
@@ -113,6 +122,7 @@ export class easyList<T> {
     /**
      * Removes an element at a provided index
      *
+     * @throws RangeError If index provided is out of range
      * @param {number} index
      * @return {*}  {(T | undefined)} The element data of the value removed
      * @memberof linkedList
@@ -188,6 +198,19 @@ export class easyList<T> {
         }
         return currElem.data;
     }
+    
+    /**
+     * Adds the specified element to the front of the list
+     *
+     * @param {(T | undefined)} elem
+     * @return {*}  {this}
+     * @memberof easyList
+     */
+    public unshift(elem : T | undefined): this {
+        // This would still give us O(1) performance, as the loop inside add will never run
+        this.add(0, elem);
+        return this;
+    }
 
 	/**
      * Replaces an element with the specified element at a given index
@@ -227,6 +250,19 @@ export class easyList<T> {
 		return currElem.data;
 	}   
 
+    /**
+     * Check if list is empty
+     *
+     * @return {*}  {boolean}
+     * @memberof easyList
+     */
+    public isEmpty(): boolean {
+        if(this._size === 0)
+            return true;
+        else
+            return false;
+    }
+
     get size(): number {
         return this._size;
     }
@@ -244,6 +280,13 @@ export class easyList<T> {
     }
 }
 
+/**
+ * A single node implementation
+ *
+ * @export
+ * @class listNode
+ * @template T
+ */
 export class listNode<T> {
     private _next: listNode<T> | undefined;
     private _prev: listNode<T> | undefined;
