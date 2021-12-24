@@ -1,10 +1,4 @@
-/**
- * Simple linked list implementation. 
- *
- * @export
- * @class easyList
- * @template T
- */
+//** A doubly-linked list implementation */
 export class easyList<T> {
     private _head: listNode<T>;
     private _tail: listNode<T>;
@@ -12,7 +6,6 @@ export class easyList<T> {
 
     /**
      * Creates an instance of easyList, and initialize and set the head and tail's sentinel nodes
-     * @memberof easyList
      */
     constructor() {
         this._head = new listNode<T>(undefined);
@@ -30,13 +23,17 @@ export class easyList<T> {
     }
 
     /**
-     * Executs provided synchronous function for every list element. Based on JavaScript's Array forEach
-     *
-     * @param {((e: T | undefined, i?: number, l?: this) => void)} callbackFn
-     * @param {unknown} [thisArgs]
-     * @memberof easyList
+     * Executes a provided function once for each array elemetn
+     * 
+     * ``` typescript
+     * list.forEach((e) => {
+     *     console.log(e);
+     * }) 
+     * ```
+     * 
+     * @param  {callbackFn} - The callback function
      */
-    forEach(callbackFn: (e: T | undefined, i?: number, l?: this) => void): void {
+    forEach(callbackFn: (e: T | undefined, i: number, l: this) => void): void {
         let index = 0;
         for(let elem = this._head; elem != this._tail.nextNode; elem = elem.nextNode) {
             callbackFn(elem.data, index++, this);
@@ -44,11 +41,9 @@ export class easyList<T> {
     }
 
     /**
-     * Adds a value at the end of the list
+     * Adds a value at the end of the list. 
      *
-     * @param {(T | undefined)} data
-     * @return {*}  {this}
-     * @memberof linkedList
+     * @return {this} - Returns itself so it can be changed
      */
     public push(data: T | undefined): this {
         const newElem = new listNode<T>(data);
@@ -72,9 +67,6 @@ export class easyList<T> {
      * Adds an element at a specified index, shifting the previous one forward
      *
      * @throws RangeError If index provided is out of range
-     * @param {number} index
-     * @param {(T | undefined)} elem
-     * @memberof linkedList
      */
     public add(index: number, elem: T | undefined): void {
         if(index < 0 || index != 0 && index >= this._size)
@@ -115,9 +107,7 @@ export class easyList<T> {
      * Get a element's data at a given index
      * 
      * @throws RangeError If provided is out of range
-     * @param {number} index
-     * @return {*}  {(T | undefined)}
-     * @memberof easyList
+     * @return The element at given index's data
      */
     public get(index: number): T | undefined {
         let currElem = this._head;
@@ -137,9 +127,7 @@ export class easyList<T> {
      * Removes an element at a provided index
      *
      * @throws RangeError If index provided is out of range
-     * @param {number} index
-     * @return {*}  {(T | undefined)} The element data of the value removed
-     * @memberof linkedList
+     * @return The removed element's data
      */
     public remove(index: number): T | undefined {
         if(index < 0 || index >= this.size)
@@ -168,8 +156,7 @@ export class easyList<T> {
      * Removes the last element in the list. 
      *
      * @throws RangeError if list is empty
-     * @return {*}  {(T | undefined)}
-     * @memberof linkedList
+     * @return The removed element's data
      */
     public pop(): T | undefined {
         if(this._size == 0)
@@ -192,8 +179,7 @@ export class easyList<T> {
      * Removes the first element, and returns it
      *
      * @throws RangeError If list is blank
-     * @return {*}  {(T | undefined)}
-     * @memberof easyList
+     * @return The removed element's data
      */
     public shift(): T | undefined {
         if(this._size == 0)
@@ -216,9 +202,7 @@ export class easyList<T> {
     /**
      * Adds the specified element to the front of the list
      *
-     * @param {(T | undefined)} elem
-     * @return {*}  {this}
-     * @memberof easyList
+     * @return Iteself to allow method chaining
      */
     public unshift(elem : T | undefined): this {
         // This would still give us O(1) performance, as the loop inside add will never run
@@ -229,12 +213,8 @@ export class easyList<T> {
 	/**
      * Replaces an element with the specified element at a given index
      *
-     * @param {number} index
-     * @param {T} element
-     * @return {*}  {(T | undefined)}
-     * @memberof linkedList The value of the old element
      */
-    public set(index: number, element: T): T | undefined {
+    public set(index: number, element: T): void {
 		if(index < 0 || index >= this.size)
 			throw new RangeError("Index provided is out of range!");
 		
@@ -260,15 +240,12 @@ export class easyList<T> {
 		}
 		
 		currElem = newElem;
-		
-		return currElem.data;
 	}   
 
     /**
      * Check if list is empty
      *
-     * @return {*}  {boolean}
-     * @memberof easyList
+     * @return True if list is empty
      */
     public isEmpty(): boolean {
         if(this._size === 0)
@@ -294,12 +271,9 @@ export class easyList<T> {
     }
 }
 
-/**
- * A single node implementation
- *
- * @export
- * @class listNode
- * @template T
+/** 
+ * A single node of a doubly linked list. **If you're seeing this then it's a bug! This should be internal!!!** 
+ * @internal
  */
 export class listNode<T> {
     private _next: listNode<T> | undefined;
@@ -319,12 +293,14 @@ export class listNode<T> {
         return this._next?.data;
     }
 
+    /** @internal */
     get nextNode(): listNode<T> {
         if(this._next === undefined)
             throw new ReferenceError("Node's next was undefined");
         return this._next;
     }
 
+    /** @internal */
     set nextNode(next : listNode<T>) {
         this._next = next;
     }
@@ -333,12 +309,14 @@ export class listNode<T> {
         return this._prev?.data;
     }
 
+    /** @internal */
     get prevNode(): listNode<T> {
         if(this._prev === undefined)
             throw new ReferenceError("Node's next was undefined");
         return this._prev;
     }
 
+    /** @internal */
     set prevNode(prev: listNode<T>) {
         this._prev = prev; 
     }
@@ -351,6 +329,7 @@ export class listNode<T> {
         this._data = data;
     }
 
+    /** @internal */
     get node() {
         return this;
     }
