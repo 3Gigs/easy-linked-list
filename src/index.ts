@@ -1,1 +1,1 @@
-export { simpleList as easyList, listNode } from "./simpleList";
+export { linkedList as linkedList, listNode } from "./linkedList";

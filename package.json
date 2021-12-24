@@ -1,7 +1,7 @@
 {
-  "name": "simple-linked-list",
+  "name": "linkedlist.js",
   "version": "0.0.0-development",
-  "description": "Simple linked list implementation for JavaScript",
+  "description": "Doubly linked list implementation for JavaScript",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "repository": {

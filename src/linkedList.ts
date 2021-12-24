@@ -1,5 +1,5 @@
 //** A doubly-linked list implementation */
-export class simpleList<T> {
+export class linkedList<T> {
     private _head: listNode<T>;
     private _tail: listNode<T>;
     private _size: number;
