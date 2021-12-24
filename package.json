@@ -32,6 +32,8 @@
     "typescript": "^4.5.4"
   },
   "release": {
-    "branches": ["master"]
+    "branches": [
+      "master"
+    ]
   }
 }
