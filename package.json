@@ -33,7 +33,8 @@
   },
   "release": {
     "branches": [
-      "master"
+      "master",
+      "next"
     ]
   }
 }
