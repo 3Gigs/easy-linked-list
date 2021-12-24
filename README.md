@@ -6,7 +6,7 @@ Because I found out JavaScript didn't have linked lists...
 ```bash
 npm install easy-list@latest
 ```
-### Basic Usage
+### Importing
 Supports both Typescript and Javascript  
 **Typescript importing**
 ```typescript
@@ -20,6 +20,7 @@ const { easyList } = require('easy-linked-list')
 const list = new easyList();
 ```
 
+### Basic Usage
 ```javascript
 list.push(1).push(2).push(3).push(4); // [ 1, 2, 3, 4 ]
 list.pop() // [ 1, 2, 3 ]
