@@ -1,9 +1,9 @@
 {
-  "name": "easy-linked-list",
+  "name": "simple-linked-list",
   "version": "0.0.0-development",
   "description": "Simple linked list implementation for JavaScript",
-  "main": "./lib/easyList.js",
-  "typings": "./lib/easyList.d.ts",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/3Gigs/easy-linked-list.git"
