@@ -1,9 +1,9 @@
-import { easyList } from "../src";
-import { assert, AssertionError } from "chai"
+import { linkedList } from "../src";
+import { assert } from "chai"
 
 describe("Linked List:", () => {
     describe("#push", () => {
-        const tList = new easyList<Number>();
+        const tList = new linkedList<Number>();
         it("Should push a value 1 from an empty list", () => {
             tList.push(1);
             assert.equal(tList.get(0), 1);
@@ -18,8 +18,8 @@ describe("Linked List:", () => {
         })
     })
     describe("#get", () => {
-        const emptyList = new easyList<Number>();
-        const simpleList = new easyList<Number>();
+        const emptyList = new linkedList<Number>();
+        const simpleList = new linkedList<Number>();
         simpleList.push(1);
         simpleList.push(2);
         simpleList.push(3);
@@ -50,7 +50,7 @@ describe("Linked List:", () => {
         })
     })
     describe("Iterator test", () => {
-        const simpleList = new easyList<number>();
+        const simpleList = new linkedList<number>();
         const valuesToAdd = [1, 2, 3];
         const valuesFound = new Array();
         simpleList.push(valuesToAdd[0]).push(valuesToAdd[1]).push(valuesToAdd[2]);
@@ -67,7 +67,7 @@ describe("Linked List:", () => {
         })
     })
     describe("#forEach", () => {
-        const list = new easyList<number>();
+        const list = new linkedList<number>();
         list.push(1).push(2).push(3).push(4).push(5);
         it("Should just work", () => {
             let n = 1;
@@ -88,8 +88,8 @@ describe("Linked List:", () => {
         })
     })
     describe("#add", () => {
-        const emptyList = new easyList<number>();
-        const simpleList = new easyList<number>();
+        const emptyList = new linkedList<number>();
+        const simpleList = new linkedList<number>();
         simpleList.push(1);
         simpleList.push(2);
         simpleList.push(3);
@@ -113,7 +113,7 @@ describe("Linked List:", () => {
             catch(e) {}
         })
         it("Should correctly shift the old element to the right", () => {
-            const simpleList = new easyList<Number>();
+            const simpleList = new linkedList<Number>();
             simpleList.push(1);
             simpleList.push(2);
             simpleList.push(3);
@@ -121,7 +121,7 @@ describe("Linked List:", () => {
             assert.equal(simpleList.get(1), 1);
         })
         it("Should correctly update head and tail if needed", () => {
-            const simpleList = new easyList<Number>();
+            const simpleList = new linkedList<Number>();
             simpleList.push(1);
             simpleList.push(2);
             simpleList.push(3);
@@ -139,8 +139,8 @@ describe("Linked List:", () => {
         })
     })
     describe("#remove", () => {
-        const emptyList = new easyList<number>();
-        const simpleList = new easyList<number>();
+        const emptyList = new linkedList<number>();
+        const simpleList = new linkedList<number>();
         simpleList.push(1);
         simpleList.push(2);
         simpleList.push(3);
@@ -163,7 +163,7 @@ describe("Linked List:", () => {
     })
     describe("#pop", () => {
         it("Should no longer have the value 4 in the list", () => {
-            const simpleList = new easyList<Number>();
+            const simpleList = new linkedList<Number>();
             simpleList.push(1).push(2).push(3).push(4);
             simpleList.pop();
             for(let e of simpleList) {
@@ -173,13 +173,13 @@ describe("Linked List:", () => {
             }
         })
         it("Should properly update tail", () => {
-            const simpleList = new easyList<Number>();
+            const simpleList = new linkedList<Number>();
             simpleList.push(1).push(2).push(3).push(4);
             simpleList.pop();
             assert.notEqual(simpleList.tail, 4);
         })
         it("Should properly update head", () => {
-            const simpleList = new easyList<Number>();
+            const simpleList = new linkedList<Number>();
             simpleList.push(1).push(2);
             simpleList.pop();
             assert.equal(simpleList.head, 1);
@@ -187,7 +187,7 @@ describe("Linked List:", () => {
             assert.equal(simpleList.head, undefined);
         })
         it("Should throw error on an empty list", () => {
-            const list = new easyList();
+            const list = new linkedList();
             try {
                 list.pop();
                 assert.fail();
@@ -197,7 +197,7 @@ describe("Linked List:", () => {
     })
     describe("#unshift", () => {
         it("Should do what it says!", () => {
-            const simpleList = new easyList<number>();
+            const simpleList = new linkedList<number>();
             simpleList.push(1).push(2);
             simpleList.unshift(3);
             assert.equal(simpleList.head, 3);
@@ -205,7 +205,7 @@ describe("Linked List:", () => {
     })
     describe("#shift", () => {
         it("Should properly remove the first element", () => {
-            const simpleList = new easyList<number>();
+            const simpleList = new linkedList<number>();
             simpleList.push(1).push(2).push(3).push(4).push(5);
             simpleList.shift();
             for(let e of simpleList) {
@@ -215,14 +215,14 @@ describe("Linked List:", () => {
             }
         })
         it("Should properly update head and tail", () => {
-            const simpleList = new easyList<number>();
+            const simpleList = new linkedList<number>();
             simpleList.push(1);
             simpleList.shift();
             assert.equal(simpleList.head, undefined);
             assert.equal(simpleList.tail, undefined);
         })
         it("Should throw error on an empty list", () => {
-            const list = new easyList();
+            const list = new linkedList();
             try {
                 list.shift();
                 assert.fail();
@@ -231,8 +231,8 @@ describe("Linked List:", () => {
         })
     })
     describe("#isEmpty", () => {
-        const emptyList = new easyList();
-        const list = new easyList();
+        const emptyList = new linkedList();
+        const list = new linkedList();
         list.push(1);
         it("Should be true on an empty list", () => {
             assert.isTrue(emptyList.isEmpty());
