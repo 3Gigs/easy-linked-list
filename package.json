@@ -1,5 +1,5 @@
 {
-  "name": "linkedlist.js",
+  "name": "easyLinkedList",
   "version": "0.0.0-development",
   "description": "Doubly linked list implementation for JavaScript",
   "main": "./lib/index.js",
