@@ -174,6 +174,14 @@ describe("Linked List:", () => {
             catch(e) {}
         })
     })
+    describe("#unshift", () => {
+        it("Should do what it says!", () => {
+            const simpleList = new easyList<number>();
+            simpleList.push(1).push(2);
+            simpleList.unshift(3);
+            assert.equal(simpleList.head, 3);
+        })
+    })
     describe("#shift", () => {
         it("Should properly remove the first element", () => {
             const simpleList = new easyList<number>();
@@ -199,6 +207,17 @@ describe("Linked List:", () => {
                 assert.fail();
             }
             catch(e) {}
+        })
+    })
+    describe("#isEmpty", () => {
+        const emptyList = new easyList();
+        const list = new easyList();
+        list.push(1);
+        it("Should be true on an empty list", () => {
+            assert.isTrue(emptyList.isEmpty());
+        })
+        it("Should return false on an non-empty list", () => {
+            assert.isFalse(list.isEmpty());
         })
     })
 })
