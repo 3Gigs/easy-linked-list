@@ -1,6 +1,6 @@
 {
   "name": "easy-linked-list",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple linked list implementation for JavaScript",
   "main": "./lib/easyList.js",
   "typings": "./lib/easyList.d.ts",
