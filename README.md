@@ -10,12 +10,14 @@ npm install easy-list@latest
 Supports both Typescript and Javascript  
 **Typescript importing**
 ```typescript
-import { easyList } from 'easy-linked-list'
-**CommonJS importing**
+import { easyList } from 'easy-linked-list' 
 ```
+
+**CommonJS importing**
 ```javascript
 const { easyList } = require('easy-linked-list')
 ```
+
 ```javascript
 const list = new easyList<Number>();
 list.push(1).push(2).push(3).push(4); // [ 1, 2, 3, 4 ]
