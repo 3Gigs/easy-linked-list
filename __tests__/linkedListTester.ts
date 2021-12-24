@@ -1,5 +1,5 @@
 import { easyList } from "../src";
-import { assert } from "chai"
+import { assert, AssertionError } from "chai"
 
 describe("Linked List:", () => {
     describe("#push", () => {
@@ -64,6 +64,27 @@ describe("Linked List:", () => {
                     assert.fail();
                 }
             }
+        })
+    })
+    describe("#forEach", () => {
+        const list = new easyList<number>();
+        list.push(1).push(2).push(3).push(4).push(5);
+        it("Should just work", () => {
+            let n = 1;
+            list.forEach((e, i, l) => {
+                assert.equal(e, n);
+                assert.equal(i, n - 1)
+                assert.equal(l, list);
+                n++;
+            })
+        })
+        it("Should work skip over deleted indexes", () => {
+            list.forEach((e) => {
+                if(e === 3) {
+                    list.remove(3);
+                }
+                assert.notEqual(e, 4);
+            })
         })
     })
     describe("#add", () => {

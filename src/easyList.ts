@@ -30,6 +30,20 @@ export class easyList<T> {
     }
 
     /**
+     * Executs provided synchronous function for every list element. Based on JavaScript's Array forEach
+     *
+     * @param {((e: T | undefined, i?: number, l?: this) => void)} callbackFn
+     * @param {unknown} [thisArgs]
+     * @memberof easyList
+     */
+    forEach(callbackFn: (e: T | undefined, i?: number, l?: this) => void): void {
+        let index = 0;
+        for(let elem = this._head; elem != this._tail.nextNode; elem = elem.nextNode) {
+            callbackFn(elem.data, index++, this);
+        }
+    }
+
+    /**
      * Adds a value at the end of the list
      *
      * @param {(T | undefined)} data
