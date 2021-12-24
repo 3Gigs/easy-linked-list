@@ -9,20 +9,20 @@ npm install easy-list@latest
 ### Importing
 Supports both Typescript and Javascript  
 **Typescript importing**
-```typescript
+```ts
 import { easyLinkedList } from 'easylinkedlist' 
 
 const list = new easyLinkedList<Number>();
 ```
 
 **CommonJS importing**
-```javascript
+```js
 const { easyLinkedList } = require('easylinkedlist');
 const list = new easyLinkedList();
 ```
 
 ### Basic Usage
-```javascript
+```js
 list.push(1).push(2).push(3).push(4); // [ 1, 2, 3, 4 ]
 list.pop(); // [ 1, 2, 3 ]
 list.shift(); // [ 2, 3 ]
