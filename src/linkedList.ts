@@ -7,12 +7,14 @@ export class easyLinkedList<T> {
     /**
      * Creates an instance of easyList, and initialize and set the head and tail's sentinel nodes
      */
-    constructor() {
+    constructor(...data: T[]) {
         this._head = new listNode<T>();
         this._tail = new listNode<T>();
         this._head.nextNode = this._tail;
         this._tail.nextNode = this._head;
         this._size = 0;
+
+        this.push(...data);
     }
 
     *[Symbol.iterator]() {
@@ -31,7 +33,10 @@ export class easyLinkedList<T> {
      * }) 
      * ```
      * 
-     * @param  {callbackFn} - The callback function
+     * @param callbackFn - The callback function
+     * * e - The current element processed
+     * * i - The current element's index
+     * * l - The current list 
      */
     forEach(callbackFn: (e: T, i: number, l: this) => void): void {
         let index = 0;
@@ -45,21 +50,23 @@ export class easyLinkedList<T> {
      *
      * @return {this} - Returns itself so it can be changed
      */
-    public push(data: T): this {
-        const newElem = new listNode<T>(data);
+    public push(...data: T[]): this {
+        for(let d of data) {
+            const newElem = new listNode<T>(d);
 
-        newElem.prevNode = this._tail;
-        // Not having a next implies that the tail should be a sentinel
-        if(!this._tail.nextNode)
-            newElem.nextNode = this._tail;
-        else
-            newElem.nextNode = this._tail.nextNode;
-        this._tail.nextNode = newElem;
-        this._tail = newElem;
-        if(this._size == 0)
-            this._head = newElem;
-        this._size++;
+            newElem.prevNode = this._tail;
+            // Not having a next implies that the tail should be a sentinel
+            if(!this._tail.nextNode)
+                newElem.nextNode = this._tail;
+            else
+                newElem.nextNode = this._tail.nextNode;
+            this._tail.nextNode = newElem;
+            this._tail = newElem;
+            if(this._size == 0)
+                this._head = newElem;
+            this._size++;
 
+        }
         return this;
     }
 

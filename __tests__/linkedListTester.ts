@@ -16,6 +16,15 @@ describe("Linked List:", () => {
             assert.equal(tList.head, 1);
             assert.equal(tList.tail, 2);
         })
+        it("Should work on an indefinite number of arguments", () => {
+            const spreadList = new easyLinkedList<number>();
+            const arr = new Array<number>(1, 2, 3, 4);
+            spreadList.push(...arr);
+            for(let i = 1; i <= 4; i++) {
+                assert.equal(spreadList.get(i - 1), i);
+            }
+
+        })
     })
     describe("#get", () => {
         const emptyList = new easyLinkedList<Number>();
