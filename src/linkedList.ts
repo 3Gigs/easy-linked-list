@@ -8,8 +8,8 @@ export class easyLinkedList<T> {
      * Creates an instance of easyList, and initialize and set the head and tail's sentinel nodes
      */
     constructor() {
-        this._head = new listNode<T>(undefined);
-        this._tail = new listNode<T>(undefined);
+        this._head = new listNode<T>();
+        this._tail = new listNode<T>();
         this._head.nextNode = this._tail;
         this._tail.nextNode = this._head;
         this._size = 0;
@@ -33,10 +33,10 @@ export class easyLinkedList<T> {
      * 
      * @param  {callbackFn} - The callback function
      */
-    forEach(callbackFn: (e: T | undefined, i: number, l: this) => void): void {
+    forEach(callbackFn: (e: T, i: number, l: this) => void): void {
         let index = 0;
         for(let elem = this._head; elem != this._tail.nextNode; elem = elem.nextNode) {
-            callbackFn(elem.data, index++, this);
+            callbackFn(elem.data as T, index++, this);
         }
     }
 
@@ -45,7 +45,7 @@ export class easyLinkedList<T> {
      *
      * @return {this} - Returns itself so it can be changed
      */
-    public push(data: T | undefined): this {
+    public push(data: T): this {
         const newElem = new listNode<T>(data);
 
         newElem.prevNode = this._tail;
@@ -68,7 +68,7 @@ export class easyLinkedList<T> {
      *
      * @throws RangeError If index provided is out of range
      */
-    public add(index: number, elem: T | undefined): void {
+    public add(index: number, elem: T): void {
         if(index < 0 || index != 0 && index >= this._size)
             throw new RangeError("Index provided is out of range!");
         
@@ -109,7 +109,7 @@ export class easyLinkedList<T> {
      * @throws RangeError If provided is out of range
      * @return The element at given index's data
      */
-    public get(index: number): T | undefined {
+    public get(index: number): T {
         let currElem = this._head;
 
         if(index < 0 || index >= this.size) {
@@ -120,7 +120,8 @@ export class easyLinkedList<T> {
             currElem = currElem.nextNode;
         }
 
-        return currElem.data;
+        // It shouldn't return undefined, as long as it's within the index
+        return currElem.data as T;
     }
 
     /**
@@ -129,7 +130,7 @@ export class easyLinkedList<T> {
      * @throws RangeError If index provided is out of range
      * @return The removed element's data
      */
-    public remove(index: number): T | undefined {
+    public remove(index: number): T {
         if(index < 0 || index >= this.size)
             throw new RangeError("Index provided is out of range!");
         
@@ -149,7 +150,8 @@ export class easyLinkedList<T> {
         }
 
         this.size--;
-        return currElem.data;
+        // It shouldn't return undefined, as long as it's within the index
+        return currElem.data as T;
     }
 
     /**
@@ -158,7 +160,7 @@ export class easyLinkedList<T> {
      * @throws RangeError if list is empty
      * @return The removed element's data
      */
-    public pop(): T | undefined {
+    public pop(): T {
         if(this._size == 0)
         {
             throw new RangeError();
@@ -172,7 +174,9 @@ export class easyLinkedList<T> {
         if(this._size == 0)
             this._head = currElem.prevNode;
 
-        return currElem.data;
+
+        // It shouldn't return undefined, as long as it's within the index
+        return currElem.data as T;
     }
 
     /**
@@ -181,7 +185,7 @@ export class easyLinkedList<T> {
      * @throws RangeError If list is blank
      * @return The removed element's data
      */
-    public shift(): T | undefined {
+    public shift(): T {
         if(this._size == 0)
         {
             throw new RangeError();
@@ -196,7 +200,8 @@ export class easyLinkedList<T> {
         if(this._size == 0) {
             this._tail = currElem.nextNode;
         }
-        return currElem.data;
+        // It shouldn't return undefined, as long as it's within the index
+        return currElem.data as T;
     }
     
     /**
@@ -204,7 +209,7 @@ export class easyLinkedList<T> {
      *
      * @return Iteself to allow method chaining
      */
-    public unshift(elem : T | undefined): this {
+    public unshift(elem : T): this {
         // This would still give us O(1) performance, as the loop inside add will never run
         this.add(0, elem);
         return this;
