@@ -30,3 +30,4 @@ list.unshift(1).unshift(0); // [ 0, 1, 2, 3 ]
 list.isEmpty(); // false
 list.set(1, 4); // [ 0, 4, 2, 3 ]
 ```
+### [Documentation](https://3gigs.github.io/easy-linked-list/)
