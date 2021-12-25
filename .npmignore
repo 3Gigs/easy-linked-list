@@ -1,4 +1,8 @@
+.github/
 src/*
 node_modules/**
 __tests__/**
 docs/
+src/
+package-lock.json
+.gitignore
