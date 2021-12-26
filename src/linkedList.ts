@@ -283,7 +283,7 @@ export class easyLinkedList<T> {
 }
 
 /** 
- * A single node of a doubly linked list. **If you're seeing this then it's a bug! This should be internal!!!** 
+ * A single node of a doubly linked list. 
  * @internal
  */
 export class listNode<T> {
