@@ -189,13 +189,12 @@ export class easyLinkedList<T> {
     /**
      * Removes the first element, and returns it
      *
-     * @throws RangeError If list is blank
      * @return The removed element's data
      */
-    public shift(): T {
+    public shift(): T | undefined {
         if(this._size == 0)
         {
-            throw new RangeError();
+            return undefined;
         }
 
         const currElem = this._head;
