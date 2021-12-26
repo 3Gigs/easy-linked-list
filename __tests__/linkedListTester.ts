@@ -230,13 +230,9 @@ describe("Linked List:", () => {
             assert.equal(simpleList.head, undefined);
             assert.equal(simpleList.tail, undefined);
         })
-        it("Should throw error on an empty list", () => {
+        it("Return undefined when shifting an empty list", () => {
             const list = new easyLinkedList();
-            try {
-                list.shift();
-                assert.fail();
-            }
-            catch(e) {}
+            assert.equal(list.shift(), undefined);
         })
     })
     describe("#isEmpty", () => {
